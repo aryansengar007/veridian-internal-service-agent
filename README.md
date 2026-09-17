@@ -25,6 +25,7 @@
 *Click the image to visit the live site ↑*
 
 </div>
+
 ---
 
 ## Overview
