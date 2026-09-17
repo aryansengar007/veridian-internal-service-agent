@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Veridian Corp internal IT service agent prototype">
+  <title>Veridian Service Desk</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">V</div>
+        <div><strong>veridian</strong><span>service desk</span></div>
+      </div>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="nav-list" aria-label="Primary navigation">
+        <button class="nav-item active" data-view="overview"><span class="nav-icon">⌂</span>Overview</button>
+        <button class="nav-item" data-view="inbox"><span class="nav-icon">◌</span>Agent inbox <b class="nav-count">15</b></button>
+        <button class="nav-item" data-view="tickets"><span class="nav-icon">▤</span>Ticket queue <b class="nav-count muted-count">10</b></button>
+        <button class="nav-item" data-view="policies"><span class="nav-icon">▧</span>Policy library</button>
+        <button class="nav-item" data-view="audit"><span class="nav-icon">◷</span>Audit trail</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="status-card"><span class="status-dot"></span><div><strong>Agent online</strong><small>Grounded mode enabled</small></div></div>
+        <div class="profile"><div class="avatar">SJ</div><div><strong>Samir Joshi</strong><small>IT operations</small></div><span class="more">•••</span></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="crumbs"><span>Service desk</span><span class="slash">/</span><strong id="page-title">Overview</strong></div>
+        <div class="top-actions"><span class="date-pill">21–25 Sep 2026</span><button class="icon-button" title="Notifications" aria-label="Notifications">♧<i></i></button><div class="avatar small">SJ</div></div>
+      </header>
+
+      <section class="view active-view" id="overview-view">
+        <div class="page-intro"><div><p class="eyebrow">INTERNAL IT SUPPORT <span class="live-tag"><span></span> Live</span></p><h1>Good morning, Samir.</h1><p class="intro-copy">Your command centre for clear, policy-grounded employee support.</p></div><button class="primary-button" id="new-request-btn"><span>＋</span> New request</button></div>
+        <div class="stats-grid"><article class="stat-card"><div class="stat-head"><span>Open requests</span><span class="stat-icon amber">◌</span></div><strong>15</strong><div class="stat-foot"><span class="trend up">↑ 4</span> since Monday</div></article><article class="stat-card"><div class="stat-head"><span>Needs routing</span><span class="stat-icon red">↗</span></div><strong>7</strong><div class="stat-foot"><span class="trend neutral">●</span> human review</div></article><article class="stat-card"><div class="stat-head"><span>Resolved by agent</span><span class="stat-icon teal">✓</span></div><strong>5</strong><div class="stat-foot"><span class="trend up">↑ 22%</span> this week</div></article><article class="stat-card"><div class="stat-head"><span>Policy sources</span><span class="stat-icon blue">▧</span></div><strong>10</strong><div class="stat-foot"><span class="trend neutral">●</span> verified sources</div></article></div>
+        <div class="overview-grid"><section class="panel activity-panel"><div class="panel-heading"><div><p class="eyebrow">LIVE WORKSTREAM</p><h2>Requests needing attention</h2></div><button class="text-button" data-view="inbox">View all <span>→</span></button></div><div class="request-list" id="overview-requests"></div></section><section class="panel pulse-panel"><div class="panel-heading"><div><p class="eyebrow">AGENT PULSE</p><h2>Today at a glance</h2></div><span class="pulse-dot"></span></div><div class="pulse-score"><div class="score-ring"><span>86</span><small>quality</small></div><div><strong>Strong coverage</strong><p>Most routine issues can be resolved from the current policy set.</p></div></div><div class="mini-divider"></div><div class="queue-line"><span><i class="legend teal"></i>Direct resolution</span><strong>5</strong></div><div class="queue-line"><span><i class="legend amber"></i>Awaiting input</span><strong>3</strong></div><div class="queue-line"><span><i class="legend red"></i>Escalation required</span><strong>7</strong></div></section></div>
+        <section class="panel insight-panel"><div class="insight-icon">✦</div><div><p class="eyebrow">GROUNDING CHECK</p><h3>Every answer has a source</h3><p>The agent cites the exact policy or ticket precedent used for its recommendation. No unsupported company policy is invented.</p></div><button class="secondary-button" data-view="policies">Explore policies <span>→</span></button></section>
+      </section>
+
+      <section class="view" id="inbox-view"><div class="page-intro compact"><div><p class="eyebrow">AGENT INBOX</p><h1>Requests needing attention</h1><p class="intro-copy">Triage, resolve, or route every employee request with a visible rationale.</p></div><div class="filter-row"><button class="filter active" data-filter="all">All <b>15</b></button><button class="filter" data-filter="escalate">Route <b>7</b></button><button class="filter" data-filter="resolve">Resolve <b>5</b></button></div></div><div class="inbox-layout"><section class="panel inbox-panel"><div class="search-row"><div class="search-box"><span>⌕</span><input id="request-search" type="search" placeholder="Search requests, people, or IDs"></div><button class="sort-button">Newest first ▾</button></div><div id="full-request-list" class="full-request-list"></div></section><section class="panel detail-panel" id="request-detail"><div class="empty-detail"><div class="empty-icon">↗</div><h3>Select a request</h3><p>Choose an item to see the grounded recommendation and take action.</p></div></section></div></section>
+
+      <section class="view" id="tickets-view"><div class="page-intro compact"><div><p class="eyebrow">TICKET QUEUE</p><h1>Operational tickets</h1><p class="intro-copy">Existing records provide context and precedent. Closed cases remain visible for audit.</p></div><button class="secondary-button" id="create-ticket-btn">＋ Create ticket</button></div><section class="panel table-panel"><div class="table-toolbar"><div class="table-tabs"><button class="table-tab active" data-ticket-filter="all">All <b>10</b></button><button class="table-tab" data-ticket-filter="active">Active <b>4</b></button><button class="table-tab" data-ticket-filter="closed">Closed <b>6</b></button></div><div class="search-box compact-search"><span>⌕</span><input id="ticket-search" type="search" placeholder="Search tickets"></div></div><div class="table-wrap"><table><thead><tr><th>Ticket</th><th>Employee</th><th>Issue summary</th><th>Status</th><th></th></tr></thead><tbody id="ticket-table"></tbody></table></div></section></section>
+
+      <section class="view" id="policies-view"><div class="page-intro compact"><div><p class="eyebrow">POLICY LIBRARY</p><h1>Grounding sources</h1><p class="intro-copy">The approved knowledge base the agent can use to answer employee questions.</p></div><div class="source-count">10 verified sources</div></div><div class="policy-grid" id="policy-grid"></div></section>
+
+      <section class="view" id="audit-view"><div class="page-intro compact"><div><p class="eyebrow">AUDIT TRAIL</p><h1>Decision history</h1><p class="intro-copy">A transparent record of what the agent read, decided, and changed.</p></div><button class="secondary-button" id="export-audit">⇩ Export log</button></div><section class="panel audit-panel"><div class="audit-summary"><div><span class="summary-number" id="audit-count">12</span><span class="summary-label">events recorded</span></div><span class="audit-retention">Session log · Sep 2026</span></div><div id="audit-list" class="audit-list"></div></section></section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="request-modal" aria-hidden="true"><div class="modal"><button class="modal-close" aria-label="Close">×</button><p class="eyebrow">NEW SERVICE REQUEST</p><h2>How can we help?</h2><p class="modal-copy">Describe the employee's issue. The agent will classify it, cite the source, and recommend the next action.</p><form id="request-form"><label>Employee email<input required type="email" id="employee-email" placeholder="name@veridian-corp.example"></label><label>Issue description<textarea required id="issue-description" rows="4" placeholder="e.g. I cannot access the VPN..."></textarea></label><button class="primary-button full-button" type="submit">Run agent triage <span>→</span></button></form></div></div>
+  <div class="toast" id="toast"><span>✓</span><div><strong id="toast-title">Saved</strong><small id="toast-message">The action was recorded.</small></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
