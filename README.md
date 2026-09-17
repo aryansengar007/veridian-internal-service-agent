@@ -18,6 +18,14 @@
 </div>
 
 ---
+<div align="center">
+
+[![Website Preview](assets/hero.png)](https://veridian-internal-service-agent.netlify.app/)
+
+*Click the image to visit the live site ↑*
+
+</div>
+---
 
 ## Overview
 
